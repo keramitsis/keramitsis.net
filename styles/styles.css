@@ -150,6 +150,30 @@ header p::selection {
   to { transform: translateY(-2000px) }
 }
 
+.cursor {
+	display: none;
+}
+
+@media (any-pointer: fine) {
+	.cursor {
+		display: block;
+	}
+	.cursor__inner {
+		z-index: 9999;
+		pointer-events: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		mix-blend-mode: difference;
+		border-radius: 50%;
+	}
+	.cursor__inner--circle {
+		width: 25px;
+		height: 25px;
+		border: 1px solid lime;
+	}
+}
+
 @media print {
   *,
   *:before,
