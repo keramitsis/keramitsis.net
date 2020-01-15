@@ -150,6 +150,10 @@ header p::selection {
   to { transform: translateY(-2000px) }
 }
 
+body.speed #sd0 { animation: animStar 4s linear infinite; animation-fill-mode: forwards; animation-direction: alternate }
+body.speed #sd1 { animation: animStar 5s linear infinite; animation-fill-mode: forwards; animation-direction: alternate }
+body.speed header { transform: rotate(-372deg) }
+
 .cursor {
 	display: none;
 }

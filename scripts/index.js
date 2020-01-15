@@ -13,10 +13,10 @@ function decryptCharcode(n, start, end, offset) {
 	return String.fromCharCode(n);
 }
 function decryptString(enc, offset) {
-	var dec = "";
-	var len = enc.length;
-	for (var i = 0; i < len; i++) {
-		var n = enc.charCodeAt(i);
+	let dec = "";
+	let len = enc.length;
+	for (let i = 0; i < len; i++) {
+		let n = enc.charCodeAt(i);
 		if (n >= 0x2b && n <= 0x3a) {
 			dec += decryptCharcode(n, 0x2b, 0x3a, offset);
 		} else if (n >= 0x40 && n <= 0x5a) {
@@ -29,4 +29,31 @@ function decryptString(enc, offset) {
 	}
 	return dec;
 }
-console.log("JavaScript is amazing!");
+
+const allowedKeys = {37: 'left', 38: 'up', 39: 'right', 40: 'down', 65: 'a', 66: 'b'};
+const konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a'];
+const audio = new Audio('audio/achievment_02.mp3');
+let konamiCodePosition = 0;
+
+document.addEventListener('keydown', function(e) {
+	let key = allowedKeys[e.keyCode];
+	let requiredKey = konamiCode[konamiCodePosition];
+
+	if (key == requiredKey) {
+		konamiCodePosition++;
+		if (konamiCodePosition === konamiCode.length) {
+			activateCheats();
+			konamiCodePosition = 0;
+		}
+	} else {
+		konamiCodePosition = 0;
+	}
+});
+
+
+function activateCheats() {
+	let audio = new Audio('audio/achievment_02.mp3');
+	audio.play();
+	body.classList.add('speed');
+	console.log('%c Konami Code ACTIVE ', 'background: #222; color: lime; font-weight: bold; font-size: 20px;');
+}
