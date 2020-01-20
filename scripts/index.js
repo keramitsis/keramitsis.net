@@ -30,9 +30,11 @@ function decryptString(enc, offset) {
 	return dec;
 }
 
-const allowedKeys = {37: 'left', 38: 'up', 39: 'right', 40: 'down', 65: 'a', 66: 'b'};
-const konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a'];
-const audio = new Audio('audio/achievment_02.mp3');
+
+console.log('%c Konami Code ... ', 'background: #222; color: lime; font-weight: bold; font-size: 20px;');
+let allowedKeys = {37: 'left', 38: 'up', 39: 'right', 40: 'down', 65: 'a', 66: 'b'};
+let konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a'];
+let audio = new Audio('audio/achievment_02.mp3');
 let konamiCodePosition = 0;
 
 document.addEventListener('keydown', function(e) {
