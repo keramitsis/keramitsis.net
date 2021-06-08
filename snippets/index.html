@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Snippets - mitsis.net</title>
+  <meta name="theme-color" content="#000000">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href="prism.css" rel="stylesheet" />
+  <style type="text/css">
+    *, ::before, ::after { 
+        box-sizing: border-box 
+    }
+    ::selection { 
+        background: #1f791f 
+    }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        background: #202020;
+        color: #a6a6a6;
+    }
+    main {
+        max-width: 960px;
+        margin: 30px auto;
+    }
+    h1 {
+        display: block;
+        position: relative;
+        margin: 20px 0 40px;
+        font-size: 38px;
+        font-weight: bold;
+    }
+    h1::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 39px;
+        z-index: -1;
+        height: 2px;
+        width: 100%;
+        background: #373737;
+        border-top: 1px solid #040404;
+    }
+    h2 {
+        margin: 40px 0 20px;
+        font-size: 24px;
+        font-weight: bold;
+    }
+    h3 {
+        margin: 20px 0 10px;
+        font-size: 20px;
+        font-weight: normal;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Prism Note: You have to escape all < and & characters inside <code> elements (code blocks and inline snippets) with &lt; and &amp; respectively, or else the browser might interpret them as an HTML tag or entity. -->
+  <main>
+    <h1>Snippets</h1>
+
+    <h2>TYPO3</h2>
+
+    <h3 id="typo3-ctype-specific-tcadefaults">CType specific TCAdefaults</h3>
+    <pre>
+        <code class="language-tsconfig">
+            [request.getQueryParams()['defVals']['tt_content']['CType'] == 'textpic']
+                TCAdefaults.tt_content.space_before_class = medium
+            [end]
+            // doesn`t work for elements where you dont´t end up in the element after creating (e.g. EXT:container)
+            // obsolete syntax: [globalVar = GP:defVals|tt_content|CType == textpic]
+        </code>
+    </pre>
+
+    <h3 id="typo3-remove-folder-linkhandler">remove folder linkHandler</h3>
+    <pre>
+        <code class="language-tsconfig">
+            TCEMAIN.linkHandler.folder >
+        </code>
+    </pre>
+
+
+    <h2>shell</h2>
+    <h3>NOTES git / docker / ddev</h3>
+    <pre>
+        <code class="language-shell">
+
+            // update pkg or EXT
+            composer update [vendor/package] 
+
+            // t3 update
+            ddev composer update typo3/"cms-*" --with-all-dependencies
+
+            // oldfashioned t3update with git
+            git status // see detached version
+            git tag -l // see available tags
+            git pull // pull fresh repo with new tags
+            git checkout [tag-name] // set to new tag
+
+            // silence the grumpy
+            ddev ssh
+            ./vendor/bin/grumphp git:deinit
+        </code>
+    </pre>
+
+
+    <h3>mysql notes</h3>
+    <pre>
+        <code class="language-shell">
+            mysqldump -u[username] -p[pw] -h[host] [dbname] > dump.sql
+        </code>
+    </pre>
+
+
+    <h2>(S)CSS</h2>
+
+    <h3>layout outline debug</h3>
+    <pre>
+        <code class="language-scss">
+            * { outline: 1px solid rgba(255,0,0,.2); :hover { outline: 1px solid rgba(255,0,0,0.6); } }
+            * * { outline: 1px solid rgba(0,255,0,.2); :hover { outline: 1px solid rgba(0,255,0,0.6); } }
+            * * * { outline: 1px solid rgba(0,0,255,.2); :hover { outline: 1px solid rgba(0,0,255,0.6); } }
+            * * * * { outline: 1px solid rgba(255,0,255,.2); :hover { outline: 1px solid rgba(255,0,0,0.6); } }
+            * * * * * { outline: 1px solid rgba(0,255,255,.2); :hover { outline: 1px solid rgba(0,255,0,0.6); } }
+            * * * * * * { outline: 1px solid rgba(255,255,0,.2); :hover { outline: 1px solid rgba(0,0,255,0.6); } }
+            * * * * * * * { outline: 1px solid rgba(255,0,0,.2); :hover { outline: 1px solid rgba(255,0,0,0.6); } }
+            * * * * * * * * { outline: 1px solid rgba(0,255,0,.2); :hover { outline: 1px solid rgba(0,255,0,0.6); } }
+            * * * * * * * * * { outline: 1px solid rgba(0,0,255,.2); :hover { outline: 1px solid rgba(0,0,255,0.6); } }
+        </code>
+    </pre>
+
+
+    <h2>windows</h2>
+    <h3>cmd</h3>
+    <pre>
+        <code class="language-text">
+            // shutdown in 30min
+            shutdown -s -t 1800
+            // shutdown in 60min
+            shutdown -s -t 3600
+        </code>
+    </pre>
+
+
+    <h2>macos</h2>
+    <h3>keyboard shortcuts</h3>
+    <pre>
+        <code class="language-text">
+            cmd shift . = show hidden files
+            cmd shift n = new dir
+
+            cmd shift 4 = (window screenshot) then space for windows selection
+            cmd shift 4 = (full screenshot)
+        </code>
+    </pre>
+
+
+    <h2>日本語</h2>
+    <h3>weekdays</h3>
+    <pre>
+        <code class="language-text">
+            日 Sunday - Sun - Nichi-yobi
+            月 Monday - Moon - Getsu-yobi
+            火 Tuesday - Fire - Ka-yobi
+            水 Wednesday - Water - Sui-yobi
+            木 Thursday - Wood - Moku-yobi
+            金 Friday - Metal - Kin-yobi
+            土 Saturday - Earth - Do-yobi 
+        </code>
+    </pre>
+
+  </main>
+  <script src="prism.js"></script>
+  <!-- prism-conf
+  https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript+bash+css-extras+sass+scss+typoscript&plugins=normalize-whitespace
+  -->
+</body>
+</html>
