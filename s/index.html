@@ -8,53 +8,80 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta name="theme-color" content="#000000">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <link href="prism.css" rel="stylesheet" />
   <style type="text/css">
-    *, ::before, ::after { 
-        box-sizing: border-box 
+    *, ::before, ::after {
+      box-sizing: border-box
     }
-    ::selection { 
-        background: #1f791f 
+    ::selection {
+      background: #1f791f
     }
     body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-        background: #202020;
-        color: #a6a6a6;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      background: #202020;
+      color: #a6a6a6
     }
     main {
-        max-width: 960px;
-        margin: 30px auto;
+      max-width: 1020px;
+      margin: 30px auto
     }
     h1 {
-        display: block;
-        position: relative;
-        margin: 20px 0 40px;
-        font-size: 38px;
-        font-weight: bold;
+      display: block;
+      position: relative;
+      margin: 20px 0 40px;
+      font-size: 38px;
+      font-weight: bold
     }
     h1::after {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 39px;
-        z-index: -1;
-        height: 2px;
-        width: 100%;
-        background: #373737;
-        border-top: 1px solid #040404;
+      content: "";
+      display: block;
+      position: absolute;
+      top: 39px;
+      z-index: -1;
+      height: 2px;
+      width: 100%;
+      background: #373737;
+      border-top: 1px solid #040404
     }
     h2 {
-        margin: 40px 0 20px;
-        font-size: 24px;
-        font-weight: bold;
+      margin: 40px 0 20px;
+      font-size: 24px;
+      font-weight: bold
     }
     h3 {
-        margin: 20px 0 10px;
-        font-size: 20px;
-        font-weight: normal;
+      position: relative;
+      margin: 20px 0 10px;
+      font-size: 20px;
+      font-weight: normal
+    }
+    h3.link-icon::after {
+      content: "🔗︁";
+      position: absolute;
+      top: 2px;
+      right: 0;
+      font-size: 16px
     }
   </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      namedH3Headers = document.querySelectorAll('h3[id]');
+      if (namedH3Headers) {
+        namedH3Headers.forEach((header) => {
+        
+          header.classList.add("link-icon");
+          header.addEventListener("click", () => {
+            header.scrollIntoView();
+
+            let uri = window.location.href;
+            navigator.clipboard.writeText(uri);
+            console.log(uri +"#"+ header.id);
+            
+          });
+        });
+      }
+    });
+  </script>
 </head>
 
 <body>
@@ -64,7 +91,7 @@
 
     <h2>TYPO3</h2>
 
-    <h3 id="typo3-ctype-specific-tcadefaults">CType specific TCAdefaults <button>🔗︁</button></h3>
+    <h3 id="typo3-ctype-specific-tcadefaults">CType specific TCAdefaults</h3>
     <pre>
         <code class="language-tsconfig">
             [request.getQueryParams()['defVals']['tt_content']['CType'] == 'textpic']
@@ -89,7 +116,7 @@
         <code class="language-shell">
 
             // update pkg or EXT
-            composer update [vendor/package] 
+            composer update [vendor/package]
 
             // t3 update
             ddev composer update typo3/"cms-*" --with-all-dependencies
@@ -168,7 +195,7 @@
             水 Wednesday - Water - Sui-yobi
             木 Thursday - Wood - Moku-yobi
             金 Friday - Metal - Kin-yobi
-            土 Saturday - Earth - Do-yobi 
+            土 Saturday - Earth - Do-yobi
         </code>
     </pre>
 
