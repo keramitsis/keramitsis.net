@@ -71,13 +71,13 @@
   <script>
     // grab all h3 with ids, add icon, add click with scrollto and copy link to clipboard
     document.addEventListener("DOMContentLoaded", function() {
-      namedH3Headers = document.querySelectorAll('h3[id]');
+      namedH3Headers = document.querySelectorAll("h3[id]");
+      domain = window.location.hostname;
       if (namedH3Headers) {
         namedH3Headers.forEach((header) => {
           header.classList.add("link-icon");
-          let uri = window.location.href + "#" + header.id;
           header.addEventListener("click", () => {
-            navigator.clipboard.writeText(uri);
+            navigator.clipboard.writeText(domain + "#" + header.id);
             header.scrollIntoView();
           });
         });
