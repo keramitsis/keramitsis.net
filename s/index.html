@@ -12,26 +12,30 @@
   <link href="prism.css" rel="stylesheet" />
   <style type="text/css">
     *, ::before, ::after {
-      box-sizing: border-box
+      box-sizing: border-box;
     }
     ::selection {
-      background: #1f791f
+      background: #1f791f;
+    }
+    html {
+      scroll-behavior: smooth;
+      
     }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
       background: #202020;
-      color: #a6a6a6
+      color: #a6a6a6;
     }
     main {
       max-width: 1020px;
-      margin: 30px auto
+      margin: 30px auto;
     }
     h1 {
       display: block;
       position: relative;
       margin: 20px 0 40px;
       font-size: 38px;
-      font-weight: bold
+      font-weight: bold;
     }
     h1::after {
       content: "";
@@ -42,41 +46,39 @@
       height: 2px;
       width: 100%;
       background: #373737;
-      border-top: 1px solid #040404
+      border-top: 1px solid #040404;
     }
     h2 {
       margin: 40px 0 20px;
       font-size: 24px;
-      font-weight: bold
+      font-weight: bold;
     }
     h3 {
       position: relative;
       margin: 20px 0 10px;
       font-size: 20px;
-      font-weight: normal
+      font-weight: normal;
     }
     h3.link-icon::after {
       content: "🔗︁";
       position: absolute;
       top: 2px;
       right: 0;
-      font-size: 16px
+      font-size: 16px;
+      cursor: pointer;
     }
   </style>
   <script>
+    // grab all h3 with ids, add icon, add click with scrollto and copy link to clipboard
     document.addEventListener("DOMContentLoaded", function() {
       namedH3Headers = document.querySelectorAll('h3[id]');
       if (namedH3Headers) {
         namedH3Headers.forEach((header) => {
-        
           header.classList.add("link-icon");
           header.addEventListener("click", () => {
-            header.scrollIntoView();
-
-            let uri = window.location.href;
+            let uri = window.location.href + "#" + header.id;
             navigator.clipboard.writeText(uri);
-            console.log(uri +"#"+ header.id);
-            
+            header.scrollIntoView();
           });
         });
       }
@@ -111,10 +113,9 @@
 
 
     <h2>shell</h2>
-    <h3>NOTES git / docker / ddev</h3>
+    <h3 id="shell-notes">NOTES git / docker / ddev</h3>
     <pre>
         <code class="language-shell">
-
             // update pkg or EXT
             composer update [vendor/package]
 
@@ -134,7 +135,7 @@
     </pre>
 
 
-    <h3>mysql notes</h3>
+    <h3 id="shell-mysql">mysql notes</h3>
     <pre>
         <code class="language-shell">
             mysqldump -u[username] -p[pw] -h[host] [dbname] > dump.sql
@@ -144,7 +145,7 @@
 
     <h2>(S)CSS</h2>
 
-    <h3>layout outline debug</h3>
+    <h3 id="scss-layout-debug">layout outline debug</h3>
     <pre>
         <code class="language-scss">
             * { outline: 1px solid rgba(255,0,0,.2); :hover { outline: 1px solid rgba(255,0,0,0.6); } }
@@ -161,7 +162,7 @@
 
 
     <h2>windows</h2>
-    <h3>cmd</h3>
+    <h3 id="win-cmd">cmd</h3>
     <pre>
         <code class="language-text">
             // shutdown in 30min
@@ -173,7 +174,7 @@
 
 
     <h2>macos</h2>
-    <h3>keyboard shortcuts</h3>
+    <h3 id="macos-shortcuts">keyboard shortcuts</h3>
     <pre>
         <code class="language-text">
             cmd shift . = show hidden files
