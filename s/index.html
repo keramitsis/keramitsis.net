@@ -75,8 +75,8 @@
       if (namedH3Headers) {
         namedH3Headers.forEach((header) => {
           header.classList.add("link-icon");
+          let uri = window.location.href + "#" + header.id;
           header.addEventListener("click", () => {
-            let uri = window.location.href + "#" + header.id;
             navigator.clipboard.writeText(uri);
             header.scrollIntoView();
           });
