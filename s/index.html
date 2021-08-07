@@ -111,11 +111,24 @@
         </code>
     </pre>
 
+    <h3 id="typo3-enable-exceptionhandler">enable ExceptionHandler in FE ・ <a target="_blank" href="https://docs.typo3.org/m/typo3/reference-typoscript/master/en-us/Setup/Config/Index.html#contentobjectexceptionhandler">T3Docs</a></h3>
+    <pre>
+        <code class="language-typoscript">
+            config.contentObjectExceptionHandler = 1
+        </code>
+    </pre>
+
 
     <h2>shell</h2>
     <h3 id="shell-notes">NOTES git / docker / ddev</h3>
     <pre>
         <code class="language-shell">
+            // ddev import db
+            ddev import-db --src=share/dump.sql.gz
+
+            // ddev web bash
+            docker-compose exec web bash
+
             // update pkg or EXT
             composer update [vendor/package]
 
@@ -131,6 +144,12 @@
             // silence the grumpy
             ddev ssh
             ./vendor/bin/grumphp git:deinit
+
+            // git history of file
+            git log -p [file]
+
+            // dir size
+            du -sh [dir]
         </code>
     </pre>
 
@@ -139,6 +158,33 @@
     <pre>
         <code class="language-shell">
             mysqldump -u[username] -p[pw] -h[host] [dbname] > dump.sql
+            mysql -u[username] -p[pw] -h[host] [dbname] < dump.sql
+        </code>
+    </pre>
+
+    <pre>
+        <code class="language-mysql">
+          select * from tt_content where CType like "%dce_dceuid41%"
+        </code>
+    </pre>
+
+    <h3 id="shell-edu">edu notes</h3>
+    <pre>
+        <code class="language-shell">
+          ### sphinx ####
+          apt-get update
+          apt-get install -y python-setuptools
+          apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+          
+          # doku rendern: in EXT:edu...
+          docker-compose up -d && docker-compose logs && docker-compose rm
+
+          # behat
+          cd /var/www/html/web/typo3conf/ext/higher_education_package/Tests/Behat/
+
+          ./bin/behat -p chrome
+
+          ./bin/behat features/news-list/ -p firefox
         </code>
     </pre>
 
@@ -157,6 +203,16 @@
             * * * * * * * { outline: 1px solid rgba(255,0,0,.2); :hover { outline: 1px solid rgba(255,0,0,0.6); } }
             * * * * * * * * { outline: 1px solid rgba(0,255,0,.2); :hover { outline: 1px solid rgba(0,255,0,0.6); } }
             * * * * * * * * * { outline: 1px solid rgba(0,0,255,.2); :hover { outline: 1px solid rgba(0,0,255,0.6); } }
+        </code>
+    </pre>
+
+
+    <h2>phpStorm</h2>
+    <h3 id="phpstorm-keyboard-shortcuts">keyboard shortcuts</h3>
+    <pre>
+        <code class="language-text">
+          // copy/paste history
+          cmd + shift + v
         </code>
     </pre>
 
@@ -190,13 +246,24 @@
     <h3>weekdays</h3>
     <pre>
         <code class="language-text">
-            日 Sunday - Sun - Nichi-yobi
-            月 Monday - Moon - Getsu-yobi
-            火 Tuesday - Fire - Ka-yobi
-            水 Wednesday - Water - Sui-yobi
-            木 Thursday - Wood - Moku-yobi
-            金 Friday - Metal - Kin-yobi
-            土 Saturday - Earth - Do-yobi
+            日 Sunday    - Sun   - Nichi-yobi - Κυριακή
+            月 Monday    - Moon  - Getsu-yobi - Δευτέρα
+            火 Tuesday   - Fire  - Ka-yobi    - Τρίτη 
+            水 Wednesday - Water - Sui-yobi   - Τετάρτη
+            木 Thursday  - Wood  - Moku-yobi  - Πέμπτη
+            金 Friday    - Metal - Kin-yobi   - Παρασκευή 
+            土 Saturday  - Earth - Do-yobi    - Σάββατο 
+        </code>
+    </pre>
+
+    <h3>temp</h3>
+    <pre>
+        <code class="language-text">
+          たしかに　　　・ stimmt
+          あぶない　　　・ vorsicht
+          めんどくさい　・ pain in the ass/neck
+          ごちそうさま　・ gochisousama
+          おおきに　　　・ ookini
         </code>
     </pre>
 
