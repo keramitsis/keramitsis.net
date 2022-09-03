@@ -126,6 +126,8 @@
             // ddev import db
             ddev import-db --src=share/dump.sql.gz
 
+            ddev snapshot restore
+
             // ddev web bash
             docker-compose exec web bash
 
