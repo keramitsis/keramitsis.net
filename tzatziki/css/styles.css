@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+/* the lime is #b2e51a */
+/* the green is #1a9f5e */
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 700px !important;
+  }
+}
+
+img.hero {
+  margin-bottom: 2rem;
+}
+
+h1 {
+  text-align: center;
+}
+
+article {
+  border-top: 1px solid #1a9f5e;
+}
+
+.language-switch {
+  margin-bottom: 1.4rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+a.lang {
+  border: 3px solid black;
+  border-radius: 50%;
+}
+
+a.lang.active {
+  border-color: #b2e51a;
+}
+
+
+/* lightbox */
+.glightbox-clean .gprev,
+.glightbox-clean .gnext,
+.glightbox-clean .gclose {
+  padding: 0;
+}
